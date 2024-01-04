@@ -1,6 +1,26 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.pyls]
-script = "pyls.py"
+[project]
+name = "pyls"
+version = "0.0.1"
+description = "pyls test"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+{name = "Souvik Mondal"}
+]
+classifiers = [
+"Programming Language :: Python :: 3"
+]
+
+[project.scripts]
+pyls = "pyls.pyls:main"
+
+[tool.setuptools]
+packages = ["pyls"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+'pyls' = ['*.json']

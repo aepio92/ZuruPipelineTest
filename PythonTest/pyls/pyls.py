@@ -1,6 +1,7 @@
 import json
 import argparse
 import datetime
+import pkg_resources
 
 
 def format_permissions(permissions):
@@ -69,7 +70,7 @@ def main():
         print(f"Error: Invalid filter option. Valid options are: {', '.join(valid_filter_options)}")
         return
 
-    json_path = 'structure.json'
+    json_path = pkg_resources.resource_filename(__name__, 'structure.json')
     with open(json_path, 'r') as file:
         directory_structure = json.load(file)  # Loading the structure.json file
 
