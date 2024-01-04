@@ -89,5 +89,4 @@ def main():
         print(" ".join(top_level_content))
 
 
-if __name__ == "__main__":
-    main()
+main()
