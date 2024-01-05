@@ -70,6 +70,7 @@ def find_path(directory, path_list):
 
 
 def main():
+    # Creating an argument parser
     parser = argparse.ArgumentParser(description='List directory content in the style of ls')
     parser.add_argument('path', nargs='?', default='.', help='Path to the directory')
     parser.add_argument('-A', action='store_true', help='List all entries including hidden ones')
@@ -90,11 +91,11 @@ def main():
     with open(json_path, 'r') as file:
         directory_structure = json.load(file)  # Loading the structure.json file
 
-    path_list = args.path.split('/')
+    path_list = args.path.split('/')  # Splitting the path from the command line into a list.
     if path_list[0] == '.':
         path_list.pop(0)
 
-    current_directory = find_path(directory_structure, path_list)
+    current_directory = find_path(directory_structure, path_list)  # Finding the specified path in the directory structure.
 
     if current_directory is None:
         print(f"error: cannot access '{args.path}': No such file or directory")
@@ -107,13 +108,13 @@ def main():
         current_directory['contents'] = reversed(current_directory['contents'])
 
     if args.l:  # sorting in list format
-        content_details = list_directory_content_details(current_directory, args.A, args.filter)
+        content_details = list_directory_content_details(current_directory, args.A, args.filter)  # Getting detailed content list.
         for detail in content_details:
-            print(detail)
+            print(detail)  # Printing each detailed content
     else:
-        top_level_content = list_directory_content(current_directory, args.A, args.filter)
-        print(" ".join(top_level_content))
+        top_level_content = list_directory_content(current_directory, args.A, args.filter)  # Getting top-level content list.
+        print(" ".join(top_level_content))  # Printing the top-level contents
 
 
-if __name__ == "__main__":  # to avoid repetition of results
+if __name__ == "__main__":  # executing the main function, also using to avoid duplicate results
     main()

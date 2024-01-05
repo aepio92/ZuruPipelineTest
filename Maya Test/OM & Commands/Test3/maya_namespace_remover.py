@@ -3,16 +3,16 @@ import maya.OpenMaya as om
 
 
 def remove_all_namespaces():
-    # Get all namespaces in the scene
+    # Getting all namespaces in the scene
     all_namespaces = cmds.namespaceInfo(listOnlyNamespaces=True, recurse=True, absoluteName=True)
 
-    # Iterate through namespaces in reverse order to handle nested namespaces properly
+    # Iterating through namespaces in reverse order to handle nested namespaces properly
     for ns in reversed(all_namespaces):
-        # Skip the default namespace
+        # Skipping the default namespace
         if ns == ":":
             continue
 
-        # Remove the namespace
+        # Removing the namespace
         try:
             cmds.namespace(removeNamespace=ns, mergeNamespaceWithRoot=True)
             print("Removed namespace:", ns)
@@ -20,5 +20,5 @@ def remove_all_namespaces():
             print("Can Not Remove namespace:", ns, "-", e)
 
 
-# Run the function to remove all namespaces
+# Running the function to remove all namespaces
 remove_all_namespaces()

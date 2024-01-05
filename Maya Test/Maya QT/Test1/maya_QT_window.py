@@ -3,6 +3,8 @@ from PySide2 import QtWidgets
 
 
 class MyDockableWindow(QtWidgets.QWidget):
+
+    # setting the object name, window title, and minimum size for the dockable window.
     def __init__(self, parent=None):
         super(MyDockableWindow, self).__init__(parent)
         self.setObjectName("MayaQtWindow")
@@ -21,6 +23,7 @@ class MyDockableWindow(QtWidgets.QWidget):
         # Connecting button click to a function
         button.clicked.connect(self.on_button_clicked)
 
+    # button click function
     def on_button_clicked(self):
         selected_objects = cmds.ls(selection=True, long=True)
         if selected_objects:
