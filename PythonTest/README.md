@@ -15,3 +15,4 @@ To Install the pyproject.toml file
 	 pyls -r               = to see the content in the reverse order
 	 pyls -t               = to sort the content according to the date modified
 	 pyls -filter=file/dir = to filter the contents
+	 pyls <name of the directory> = to browse inside a directory 
